@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.utn.tp.app.RepoDireccion;
 import com.utn.tp.app.RepoUsuario;
+import com.utn.tp.cotizador.Cotizador;
 import com.utn.tp.model.Usuario;
 
 //@RepositoryRestController
@@ -48,6 +49,7 @@ public class ContUsuarioCompliment {
 
 	@RequestMapping(method = RequestMethod.GET, value = "")
 	public @ResponseBody Iterable<Usuario> getUsuarios() {
+		
 		return repoUsuario.findAll();
 
 	}
