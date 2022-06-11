@@ -36,6 +36,14 @@ public class Producto implements Serializable {
 	public Producto() {
 		super();
 	}
+	
+	public Producto(String nombre, String descripcion, Float precioDolar, Vendedor vendedor) {
+		super();
+		this.nombre = nombre;
+		this.descripcion = descripcion;
+		this.precioDolar = precioDolar;
+		this.vendedor = vendedor;
+	}
 
 	public Integer getId() {
 		return id;

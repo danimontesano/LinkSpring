@@ -49,8 +49,10 @@ public class Vendedor implements Serializable {
 	@OneToMany(mappedBy = "vendedor")
 	@JsonIgnoreProperties("vendedor")
 	private List<Producto> productos;
-	
-//	private List<OrdenDeCompra> historialDeVentas;
+
+	@OneToMany(mappedBy = "vendedor")
+	@JsonIgnoreProperties("vendedor")
+	private List<OrdenDeCompra> historialDeVentas;
 	
 	
 	
@@ -59,6 +61,27 @@ public class Vendedor implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 	
+	
+	public Vendedor(Usuario usuario, String razonSocial, String cuit, List<Proveedor> proveedores,
+			List<Producto> productos, List<OrdenDeCompra> historialDeVentas) {
+		super();
+		this.usuario = usuario;
+		this.razonSocial = razonSocial;
+		this.cuit = cuit;
+		this.proveedores = proveedores;
+		this.productos = productos;
+		this.historialDeVentas = historialDeVentas;
+	}
+	
+	public Vendedor(Usuario usuario, String razonSocial, String cuit, List<Proveedor> proveedores) {
+		super();
+		this.usuario = usuario;
+		this.razonSocial = razonSocial;
+		this.cuit = cuit;
+		this.proveedores = proveedores;
+	}
+
+
 	public Integer getId() {
 		return id;
 	}

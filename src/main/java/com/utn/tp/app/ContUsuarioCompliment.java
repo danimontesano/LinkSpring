@@ -2,6 +2,7 @@ package com.utn.tp.app;
 
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.transaction.Transactional;
 
@@ -16,6 +17,7 @@ import org.springframework.hateoas.PagedModel;
 import org.springframework.hateoas.server.RepresentationModelAssembler;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -41,17 +43,36 @@ public class ContUsuarioCompliment {
 	
 	@Transactional
 	@RequestMapping(method = RequestMethod.POST, value = "")
-	public void create(@RequestBody Usuario usuario) {
+	public @ResponseBody Usuario create(@RequestBody Usuario usuario) {
 		System.out.println(usuario.getApellido());
 		repoDireccion.save(usuario.getDireccion());
 		repoUsuario.save(usuario);
+		return usuario;
 	}
+	
+//	@Transactional
+//	@RequestMapping(method = RequestMethod.POST, value = "")
+//	public @ResponseBody ResponseEntity<Usuario> create(@RequestBody EntityModel<Usuario> usuario) {
+//		repoUsuario.save(usuario.getContent());
+//		return ResponseEntity.ok(usuario.getContent());
+//	}
 
 	@RequestMapping(method = RequestMethod.GET, value = "")
 	public @ResponseBody Iterable<Usuario> getUsuarios() {
 		
 		return repoUsuario.findAll();
 
+	}
+	
+	@RequestMapping(method = RequestMethod.GET, value = "/{id}")
+	public @ResponseBody ResponseEntity<Usuario> getUsuarios(@PathVariable("id") Integer id) {
+		
+		Optional<Usuario> optional = repoUsuario.findById(id);
+		
+		if(optional.isPresent()) {
+			return ResponseEntity.ok(optional.get());			
+		}
+		return null;
 	}
 	
 	

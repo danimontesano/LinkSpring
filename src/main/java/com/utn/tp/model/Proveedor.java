@@ -23,6 +23,15 @@ public class Proveedor implements Serializable{
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
+	
+
+	public Proveedor(String nombre) {
+		super();
+		this.nombre = nombre;
+	}
+
+
 
 	public Integer getId() {
 		return id;

@@ -23,6 +23,7 @@ public class ItemProducto implements Serializable{
 
 	@ManyToOne
 	@NotNull
+	//TODO: CHEQUEAR SI NO HAY BUCLE ENTRE EL VENDEDOR EL HISTORIAL DE VENTAS, ¿ACÁ TENDRIA QUE IR EL IGNORE PROPERTIES?
 	private Producto producto;
 	
 	@NotNull
@@ -30,6 +31,19 @@ public class ItemProducto implements Serializable{
 	
 	@NotNull
 	private Float precioUnitario;
+
+	
+	public ItemProducto(@NotNull Producto producto, @NotNull Integer cantidad, @NotNull Float precioUnitario) {
+		super();
+		this.producto = producto;
+		this.cantidad = cantidad;
+		this.precioUnitario = precioUnitario;
+	}
+
+	public ItemProducto() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 
 	public Integer getId() {
 		return id;
@@ -61,11 +75,6 @@ public class ItemProducto implements Serializable{
 
 	public void setPrecioUnitario(Float precioUnitario) {
 		this.precioUnitario = precioUnitario;
-	}
-
-	public ItemProducto() {
-		super();
-		// TODO Auto-generated constructor stub
 	}
 	
 	

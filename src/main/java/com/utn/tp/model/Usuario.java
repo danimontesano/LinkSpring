@@ -45,6 +45,19 @@ public class Usuario implements Serializable {
 //
 //    //private Perfil perfil; //comprador  ->  vendedor
 //	
+	
+	public Usuario() {
+		super();
+	}
+	
+
+	public Usuario(String nombre, String apellido, Direccion direccion) {
+		super();
+		this.nombre = nombre;
+		this.apellido = apellido;
+		this.direccion = direccion;
+	}
+
 
 	public Comprador getComprador() {
 		return comprador;
@@ -52,10 +65,6 @@ public class Usuario implements Serializable {
 
 	public void setComprador(Comprador comprador) {
 		this.comprador = comprador;
-	}
-
-	public Usuario() {
-		super();
 	}
 
 	public Integer getId() {

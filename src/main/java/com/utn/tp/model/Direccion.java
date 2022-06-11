@@ -23,6 +23,13 @@ public class Direccion implements Serializable {
 	
 	
 	
+	public Direccion(String calle, Integer numero, String codigoPostal) {
+		super();
+		this.calle = calle;
+		this.numero = numero;
+		this.codigoPostal = codigoPostal;
+	}
+
 	public Direccion() {
 		super();
 		// TODO Auto-generated constructor stub

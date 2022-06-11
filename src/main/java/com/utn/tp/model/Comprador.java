@@ -35,13 +35,30 @@ public class Comprador implements Serializable {
 	@OneToMany
 	@JoinColumn(name = "comprador_id")
 	private List<ItemProducto> carritoCompras;
-//
-//	private List<OrdenDeCompra> historialDeCompras;
-//
+
+	@OneToMany(mappedBy = "comprador")
+	@JsonIgnoreProperties("comprador")
+	private List<OrdenDeCompra> historialDeCompras;
+
 //	private List<MetodoDePago> metodosDePago;
 
+	
+	
 	public Integer getId() {
 		return id;
+	}
+
+	public Comprador(Usuario usuario, Integer numeroDocumento, List<ItemProducto> carritoCompras,
+			List<OrdenDeCompra> historialDeCompras) {
+		super();
+		this.usuario = usuario;
+		this.numeroDocumento = numeroDocumento;
+		this.carritoCompras = carritoCompras;
+		this.historialDeCompras = historialDeCompras;
+	}
+	
+	public Comprador() {
+		super();
 	}
 
 	public void setId(Integer id) {
@@ -79,14 +96,14 @@ public class Comprador implements Serializable {
 	public void setCarritoCompras(List<ItemProducto> carritoCompras) {
 		this.carritoCompras = carritoCompras;
 	}
-//
-//	public List<OrdenDeCompra> getHistorialDeCompras() {
-//		return historialDeCompras;
-//	}
-//
-//	public void setHistorialDeCompras(List<OrdenDeCompra> historialDeCompras) {
-//		this.historialDeCompras = historialDeCompras;
-//	}
+
+	public List<OrdenDeCompra> getHistorialDeCompras() {
+		return historialDeCompras;
+	}
+
+	public void setHistorialDeCompras(List<OrdenDeCompra> historialDeCompras) {
+		this.historialDeCompras = historialDeCompras;
+	}
 //
 //	public List<MetodoDePago> getMetodosDePago() {
 //		return metodosDePago;
