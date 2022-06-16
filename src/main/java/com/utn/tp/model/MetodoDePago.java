@@ -1,5 +1,7 @@
 package com.utn.tp.model;
 
-public interface MetodoDePago {
-
+public enum MetodoDePago {
+	TARJETA_CREDITO,
+	TARJETA_DEBITO,
+	EFECTIVO
 }

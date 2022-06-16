@@ -3,6 +3,7 @@ package com.utn.tp.app;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 import javax.transaction.Transactional;
 
@@ -65,7 +66,7 @@ public class ContUsuarioCompliment {
 	}
 	
 	@RequestMapping(method = RequestMethod.GET, value = "/{id}")
-	public @ResponseBody ResponseEntity<Usuario> getUsuarios(@PathVariable("id") Integer id) {
+	public @ResponseBody ResponseEntity<Usuario> getUsuarios(@PathVariable("id") UUID id) {
 		
 		Optional<Usuario> optional = repoUsuario.findById(id);
 		

@@ -1,6 +1,7 @@
 package com.utn.tp.app;
 
 import java.util.Optional;
+import java.util.UUID;
 
 import javax.transaction.Transactional;
 
@@ -62,7 +63,7 @@ public class ContCompradorCompliment {
 	
 	@Transactional
 	@RequestMapping(method = RequestMethod.POST, value = "/{usuarioId}/itemProducto")
-	public void agregarItemCarrito(@PathVariable("usuarioId") Integer usuarioId, @RequestBody ItemProducto itemProducto) {
+	public void agregarItemCarrito(@PathVariable("usuarioId") UUID usuarioId, @RequestBody ItemProducto itemProducto) {
 		Optional<Usuario> unUsuario = repoUsuario.findById(usuarioId);
 		Optional<Producto> unProducto = repoProducto.findById(itemProducto.getProducto().getId());
 		if(unUsuario.isPresent() && unProducto.isPresent()) {

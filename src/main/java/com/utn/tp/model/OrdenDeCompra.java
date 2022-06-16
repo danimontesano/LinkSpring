@@ -54,6 +54,17 @@ public class OrdenDeCompra {
 		this.vendedor = vendedor;
 	}
 
+	
+
+	public Integer getId() {
+		return id;
+	}
+
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
 
 	public List<ItemProducto> getProductos() {
 		return productos;

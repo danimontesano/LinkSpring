@@ -2,6 +2,7 @@ package com.utn.tp.model;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.UUID;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -20,10 +21,10 @@ public class Comprador implements Serializable {
 
 	@Id
 	@Column(name = "usuario_id")
-	private Integer id;
+	private UUID id;
 
 	@MapsId
-	@JoinColumn(name = "usuario_id")
+	@JoinColumn(name = "usuario_id", columnDefinition = "BINARY(16)")
 	@OneToOne(optional = false)
 	@JsonIgnoreProperties("comprador")
 	private Usuario usuario;
@@ -43,10 +44,6 @@ public class Comprador implements Serializable {
 //	private List<MetodoDePago> metodosDePago;
 
 	
-	
-	public Integer getId() {
-		return id;
-	}
 
 	public Comprador(Usuario usuario, Integer numeroDocumento, List<ItemProducto> carritoCompras,
 			List<OrdenDeCompra> historialDeCompras) {
@@ -60,8 +57,12 @@ public class Comprador implements Serializable {
 	public Comprador() {
 		super();
 	}
+	
+	public UUID getId() {
+		return id;
+	}
 
-	public void setId(Integer id) {
+	public void setId(UUID id) {
 		this.id = id;
 	}
 
