@@ -32,6 +32,7 @@ import com.utn.tp.model.PromocionCupon;
 import com.utn.tp.model.PromocionMedioDePago;
 import com.utn.tp.model.Proveedor;
 import com.utn.tp.model.TipoDescuento;
+import com.utn.tp.model.TipoDocumento;
 import com.utn.tp.model.Usuario;
 import com.utn.tp.model.Vendedor;
 
@@ -78,7 +79,7 @@ public class InitData implements CommandLineRunner{
 //		config.getProjectionConfiguration().addProjection(AlumnoDTO2.class);
 //		config.exposeIdsFor(Materia.class, Alumno.class);
 		
-		//config.exposeIdsFor(OrdenDeCompra.class);
+		config.exposeIdsFor(Usuario.class, Producto.class);
 		
 		if(repoUsuario.count() != 0) {
 			return;
@@ -109,9 +110,9 @@ public class InitData implements CommandLineRunner{
 		repoDireccion.save(direccion3);
 		
 		//Creacion de usuario
-		Usuario usuario1 = new Usuario("nombre1", "apellido1", direccion1);
-		Usuario usuario2 = new Usuario("nombre2", "apellido2", direccion2);
-		Usuario usuario3 = new Usuario("nombre3", "apellido3", direccion3);
+		Usuario usuario1 = new Usuario("nombre1", "apellido1", direccion1, "comp", "comp");
+		Usuario usuario2 = new Usuario("nombre2", "apellido2", direccion2, "vend", "vend");
+		Usuario usuario3 = new Usuario("nombre3", "apellido3", direccion3, "comp-vend", "comp-vend");
 		List<Usuario> usuariosIniciales = Arrays.asList(
 				usuario1,
 				usuario2,
@@ -124,8 +125,8 @@ public class InitData implements CommandLineRunner{
 		
 
 		//Creacion de compradores
-		Comprador comprador1 = new Comprador(usuario1, 43176108, new ArrayList<>(), new ArrayList<>());
-		Comprador comprador2 = new Comprador(usuario3, 43176108, new ArrayList<>(), new ArrayList<>());
+		Comprador comprador1 = new Comprador(usuario1, TipoDocumento.DNI, 43176108, new ArrayList<>(), new ArrayList<>());
+		Comprador comprador2 = new Comprador(usuario3, TipoDocumento.DNI, 43176108, new ArrayList<>(), new ArrayList<>());
 		repoComprador.save(comprador1);
 		repoComprador.save(comprador2);
 		
@@ -136,11 +137,11 @@ public class InitData implements CommandLineRunner{
 		repoVendedor.save(vendedor2);
 		
 		//Creacion de productos
-		Producto producto1 = new Producto("producto 1", "descripcion del producto 1", 30.50f, vendedor1);
-		Producto producto2 = new Producto("producto 2", "descripcion del producto 2", 39.99f, vendedor1);
-		Producto producto3 = new Producto("producto 3", "descripcion del producto 3", 34.99f, vendedor1);
-		Producto producto4 = new Producto("producto 4", "descripcion del producto 4", 32.00f, vendedor2);
-		Producto producto5 = new Producto("producto 5", "descripcion del producto 5", 35.00f, vendedor2);
+		Producto producto1 = new Producto("GTX 1060", "descripcion de GTX 1060", "https://pascalonline.com.ar/wp-content/uploads/2016/12/1060g1.png", 299.00f, vendedor1);
+		Producto producto2 = new Producto("GTX 1080 Ti Founders Edition", "descripcion de GTX 1080 Ti Founders Edition", "https://www.palit.com/product/vga/picture/p02841/p02841_propng_124358b6960077f27.png", 329.00f, vendedor1);
+		Producto producto3 = new Producto("RTX 2060", "descripcion de RTX 2060", "https://http2.mlstatic.com/D_NQ_NP_851950-MLA42349749318_062020-W.jpg", 349.00f, vendedor1);
+		Producto producto4 = new Producto("RTX 3080 Founders Edition", "descripcion de RTX 3080 Founders Edition", "https://acf.geeknetic.es/imgw/imagenes/Tutoriales/2020/1879-GeForce-RTX-3080-Founders-Edition/1879-GeForce-RTX-3080-Founders-Edition-8.jpg?f=webp", 499.00f, vendedor2);
+		Producto producto5 = new Producto("RX 6800 XT", "descripcion de RX 6800 XT", "https://mexx-img-2019.s3.amazonaws.com/placa-video-AMD-Radeon-OC_40005_1.jpeg", 399.00f, vendedor2);
 		repoProducto.save(producto1);
 		repoProducto.save(producto2);
 		repoProducto.save(producto3);

@@ -19,12 +19,14 @@ public class Producto implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
 	private String nombre;
 
 	private String descripcion;
+	
+	private String imagen;
 
 	private Float precioDolar;
 
@@ -37,10 +39,11 @@ public class Producto implements Serializable {
 		super();
 	}
 	
-	public Producto(String nombre, String descripcion, Float precioDolar, Vendedor vendedor) {
+	public Producto(String nombre, String descripcion, String imagen, Float precioDolar, Vendedor vendedor) {
 		super();
 		this.nombre = nombre;
 		this.descripcion = descripcion;
+		this.imagen = imagen;
 		this.precioDolar = precioDolar;
 		this.vendedor = vendedor;
 	}
@@ -75,6 +78,14 @@ public class Producto implements Serializable {
 
 	public void setDescripcion(String descripcion) {
 		this.descripcion = descripcion;
+	}
+	
+	public String getImagen() {
+		return imagen;
+	}
+	
+	public void setImagen(String imagen) {
+		this.imagen = imagen;
 	}
 
 	public Float getPrecioDolar() {

@@ -6,6 +6,8 @@ import java.util.UUID;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.MapsId;
@@ -29,7 +31,8 @@ public class Comprador implements Serializable {
 	@JsonIgnoreProperties("comprador")
 	private Usuario usuario;
 
-//	private TipoDocumento tipoDocumento;
+	@Enumerated(EnumType.STRING)
+	private TipoDocumento tipoDocumento;
 
 	private Integer numeroDocumento;
 
@@ -45,10 +48,11 @@ public class Comprador implements Serializable {
 
 	
 
-	public Comprador(Usuario usuario, Integer numeroDocumento, List<ItemProducto> carritoCompras,
+	public Comprador(Usuario usuario, TipoDocumento tipoDocumento, Integer numeroDocumento, List<ItemProducto> carritoCompras,
 			List<OrdenDeCompra> historialDeCompras) {
 		super();
 		this.usuario = usuario;
+		this.tipoDocumento = tipoDocumento;
 		this.numeroDocumento = numeroDocumento;
 		this.carritoCompras = carritoCompras;
 		this.historialDeCompras = historialDeCompras;
@@ -74,13 +78,13 @@ public class Comprador implements Serializable {
 		this.usuario = usuario;
 	}
 
-//	public TipoDocumento getTipoDocumento() {
-//		return tipoDocumento;
-//	}
-//
-//	public void setTipoDocumento(TipoDocumento tipoDocumento) {
-//		this.tipoDocumento = tipoDocumento;
-//	}
+	public TipoDocumento getTipoDocumento() {
+		return tipoDocumento;
+	}
+
+	public void setTipoDocumento(TipoDocumento tipoDocumento) {
+		this.tipoDocumento = tipoDocumento;
+	}
 
 	public Integer getNumeroDocumento() {
 		return numeroDocumento;

@@ -18,7 +18,7 @@ public class ItemProducto implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 
 	@ManyToOne
@@ -29,7 +29,7 @@ public class ItemProducto implements Serializable{
 	@NotNull
 	private Integer cantidad;
 	
-	@NotNull
+	
 	private Float precioUnitario;
 
 	

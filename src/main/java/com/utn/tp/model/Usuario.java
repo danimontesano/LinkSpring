@@ -7,15 +7,12 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 
-import org.hibernate.annotations.GenericGenerator;
-
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 public class Usuario implements Serializable {
@@ -38,6 +35,13 @@ public class Usuario implements Serializable {
 	private String nombre;
 
 	private String apellido;
+	
+	@JsonIgnore
+	private String nombreDeUsuario;
+	
+	@JsonIgnore
+	private String contrasenia;
+	
 
 	@OneToOne
 	private Direccion direccion;
@@ -64,11 +68,13 @@ public class Usuario implements Serializable {
 	}
 	
 
-	public Usuario(String nombre, String apellido, Direccion direccion) {
+	public Usuario(String nombre, String apellido, Direccion direccion, String nombreDeUsuario, String contrasenia) {
 		super();
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.direccion = direccion;
+		this.nombreDeUsuario = nombreDeUsuario;
+		this.contrasenia = contrasenia;
 	}
 
 
@@ -119,6 +125,26 @@ public class Usuario implements Serializable {
 
 	public void setDireccion(Direccion direccion) {
 		this.direccion = direccion;
+	}
+
+
+	public String getContrasenia() {
+		return contrasenia;
+	}
+
+
+	public void setContrasenia(String contrasenia) {
+		this.contrasenia = contrasenia;
+	}
+
+
+	public String getNombreDeUsuario() {
+		return nombreDeUsuario;
+	}
+
+
+	public void setNombreDeUsuario(String nombreDeUsuario) {
+		this.nombreDeUsuario = nombreDeUsuario;
 	}
 
 }

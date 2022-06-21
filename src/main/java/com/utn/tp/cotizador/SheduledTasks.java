@@ -31,7 +31,7 @@ public class SheduledTasks {
 	    Cotizador cotizador = Cotizador.getInstancia();
 	    cotizador.value.actualizar(date, precioDolarDTO.getCompra(), precioDolarDTO.getVenta());    
 	    
-	    System.out.println("Cotizador actualizado a las: " + cotizador.value.getFecha());
+	    System.out.println("-Cotizador actualizado a las: " + cotizador.value.getFecha() + "\n-Nuevo valor: " + cotizador.value.getCompra() + "\n");
 	}
 
 }

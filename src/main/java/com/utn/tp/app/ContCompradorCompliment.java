@@ -18,7 +18,7 @@ import com.utn.tp.model.Producto;
 import com.utn.tp.model.Usuario;
 
 @RestController
-@RequestMapping(value = "/Compradores")
+@RequestMapping(value = "/api/Compradores")
 public class ContCompradorCompliment {
 
 	@Autowired
